@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  tagesschau-bot:
+    build: .
+    container_name: tagesschau-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./last_ids.json:/app/last_ids.json  # optional: persistente Speicherung außerhalb des Containers
