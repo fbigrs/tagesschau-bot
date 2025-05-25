@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
+ROLE_ID = os.getenv('DISCORD_ROLE_ID')
 API_URL = 'https://www.tagesschau.de/api2u/homepage'
 SAVE_FILE = 'last_ids.json'
 
@@ -69,7 +70,9 @@ async def check_for_updates():
                 if image_url:
                     embed.set_image(url=image_url)
 
-                await channel.send(embed=embed)
+                # Role mention hinzufügen
+                role_mention = f"<@&{ROLE_ID}>" if ROLE_ID else ""
+                await channel.send(content=role_mention, embed=embed)
                 last_posted_ids.add(meldung['sophoraId'])
                 save_last_ids(last_posted_ids)
                 logging.info(f"Gepostet: {meldung['title']}")
