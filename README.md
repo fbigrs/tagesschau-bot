@@ -8,6 +8,7 @@ Dieser Bot postet automatisch neue **Eilmeldungen** von tagesschau.de in einen v
 - Erkennt doppelte Nachrichten automatisch
 - Nutzt `.env` für sichere Einstellungen
 - Logging über Konsole
+- Optional: Erwähnt eine bestimmte Rolle bei neuen Eilmeldungen
 
 ## 🔧 Einrichtung
 
@@ -21,7 +22,9 @@ Dieser Bot postet automatisch neue **Eilmeldungen** von tagesschau.de in einen v
    ```env
    DISCORD_BOT_TOKEN=dein-token
    DISCORD_CHANNEL_ID=deine-channel-id
+   DISCORD_ROLE_ID=deine-role-id  # Optional: Rolle die bei Eilmeldungen erwähnt wird
    ```
+   > **Hinweis zur Role ID**: Aktiviere den "Entwicklermodus" in Discord (Einstellungen > App-Einstellungen > Erweitert), dann kannst du per Rechtsklick auf eine Rolle die ID kopieren.
 5. Starte den Bot:
    ```bash
    python bot.py
@@ -36,3 +39,5 @@ Dieser Bot postet automatisch neue **Eilmeldungen** von tagesschau.de in einen v
 ## 🛠 Hinweise
 - Die API wird alle 60 Sekunden abgefragt
 - Nachrichten werden **nur gepostet**, wenn sie das Tag `"Eilmeldung"` enthalten
+- Stelle sicher, dass der Bot die Berechtigung hat, Rollen zu erwähnen
+- Die zu erwähnende Rolle muss als "erwähnbar" konfiguriert sein
